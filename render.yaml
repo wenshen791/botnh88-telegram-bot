@@ -1,0 +1,8 @@
+
+services:
+  - type: web
+    name: nh88-bot
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: python main.py
