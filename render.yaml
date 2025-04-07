@@ -1,9 +1,10 @@
 
 services:
   - type: worker
-    name: botnh88
+    name: nh88-bot
     env: python
     plan: free
-    buildCommand: ""
+    buildCommand: pip install -r requirements.txt
     startCommand: python main.py
+
 
