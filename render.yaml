@@ -1,8 +1,9 @@
 
 services:
-  - type: web
-    name: nh88-bot
+  - type: worker
+    name: botnh88
     env: python
     plan: free
     buildCommand: ""
     startCommand: python main.py
+
