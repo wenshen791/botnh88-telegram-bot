@@ -1,19 +1,17 @@
+import telebot
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, ContextTypes
+# Thay token bot của bạn ở dòng dưới
+TOKEN = "7645007167:AAEMhmRo1LEmEJp6BJt_tO6-9hKj5yPlVy8"
+bot = telebot.TeleBot(TOKEN)
 
-BOT_TOKEN = "7645007167:AAEMhmRo1LEmEJp6BJt_tO6-9hKj5yPlVy8"
+@bot.message_handler(commands=['start'])
+def welcome(message):
+    markup = InlineKeyboardMarkup()
+    button = InlineKeyboardButton("ĐĂNG KÝ +888K", url="https://nh88trangchu.com")
+    markup.add(button)
+    bot.send_message(message.chat.id, "🎁 Chào mừng đến với NH88!\nNhấn nút bên dưới để nhận ngay +888K!", reply_markup=markup)
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [[
-        InlineKeyboardButton("🚀 Truy cập NH88", web_app={"url": "https://nh88trangchu.com"})
-    ]]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text(
-        "🎰 Chào mừng đến với NH88! Bấm nút bên dưới để mở mini app:",
-        reply_markup=reply_markup
-    )
-
-app = Application.builder().token(BOT_TOKEN).build()
-app.add_handler(CommandHandler("start", start))
-app.run_polling()
+if __name__ == '__main__':
+    print("🤖 Bot NH88 đang chạy bằng polling...")
+    bot.polling(non_stop=True)
